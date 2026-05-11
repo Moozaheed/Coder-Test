@@ -4,5 +4,6 @@
   "service": "nginx",
   "workspaceFolder": "/workspace",
   "forwardPorts": [80],
-  "remoteUser": "root"
+  "remoteUser": "root",
+  "shutdownAction": "stopCompose"
 }
