@@ -3,14 +3,6 @@
   "dockerComposeFile": "../docker-compose.yml",
   "service": "nginx",
   "workspaceFolder": "/workspace",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "felixbecker.php-debug",
-        "bmewburn.vscode-intelephense-client"
-      ]
-    }
-  },
   "forwardPorts": [80],
   "remoteUser": "root"
 }
