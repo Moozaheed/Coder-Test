@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
 RUN rm /etc/nginx/sites-enabled/default
 
 # Add custom nginx config
-COPY nginx.conf /nginx/default.conf
+COPY /nginx/default.conf /etc/nginx/conf.d/default.conf
 
 # Copy project
 COPY . /var/www/html/
