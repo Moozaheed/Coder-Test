@@ -1,7 +1,7 @@
 {
   "name": "Coder Test Project",
   "dockerComposeFile": "../docker-compose.yml",
-  "service": "app",
+  "service": "nginx",
   "workspaceFolder": "/workspace",
   "customizations": {
     "vscode": {
