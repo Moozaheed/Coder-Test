@@ -1,16 +1,21 @@
-FROM php:8.2-apache
+FROM php:8.2-fpm
 
-# Use the default production configuration
-RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+# Install Nginx
+RUN apt-get update && apt-get install -y nginx && rm -rf /var/lib/apt/lists/*
 
-# Set the document root to /var/www/html/public
-ENV APACHE_DOCUMENT_ROOT /var/www/html/public
-
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+# Copy Nginx configuration
+COPY nginx/default.conf /etc/nginx/sites-available/default
 
 # Copy project files
 COPY . /var/www/html/
 
-# Ensure permissions are correct
+# Copy and set permissions for entrypoint script
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Set permissions for web root
 RUN chown -R www-data:www-data /var/www/html
+
+EXPOSE 80
+
+CMD ["/usr/local/bin/entrypoint.sh"]
