@@ -1,0 +1,17 @@
+{
+    "name": "Coder Test Project",
+    "build": {
+        "dockerfile": "../Dockerfile",
+        "context": ".."
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "felixbecker.php-debug",
+                "bmewburn.vscode-intelephense-client"
+            ]
+        }
+    },
+    "forwardPorts": [80],
+    "remoteUser": "root"
+}
